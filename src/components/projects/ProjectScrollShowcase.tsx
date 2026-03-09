@@ -45,16 +45,16 @@ function ProjectCard({ project, index, total, scrollYProgress }: ProjectCardProp
   return (
     <motion.article
       style={{ opacity, y, scale }}
-      className="absolute inset-0 flex items-center justify-center px-6 md:px-16 pointer-events-none"
+      className="absolute inset-0 flex items-center justify-center px-6 md:px-16 pointer-events-none overflow-y-auto py-6 md:py-0"
       aria-hidden={false}
     >
       <div className="w-full max-w-5xl pointer-events-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-3 border-charcoal bg-cream shadow-[8px_8px_0px_#1a1a1a]">
 
           {/* Left: number + title */}
-          <div className="p-8 md:p-12 flex flex-col justify-between">
+          <div className="p-6 md:p-12 flex flex-col justify-between">
             <div>
-              <span className="font-display text-[6rem] leading-none text-red-accent select-none block">
+              <span className="font-display text-[4rem] md:text-[6rem] leading-none text-red-accent select-none block">
                 {num}
               </span>
               <p className="font-display text-olive text-sm tracking-widest mt-1 mb-3">
@@ -90,7 +90,7 @@ function ProjectCard({ project, index, total, scrollYProgress }: ProjectCardProp
           </div>
 
           {/* Right: description + tech + year */}
-          <div className="p-8 md:p-12 flex flex-col justify-between bg-parchment panel-separator">
+          <div className="p-6 md:p-12 flex flex-col justify-between bg-parchment panel-separator">
             <p className="font-body text-charcoal/80 text-base leading-relaxed">
               {project.description}
             </p>
@@ -107,7 +107,7 @@ function ProjectCard({ project, index, total, scrollYProgress }: ProjectCardProp
                   </span>
                 ))}
               </div>
-              <p className="font-display text-charcoal/30 text-6xl mt-4 text-right leading-none select-none">
+              <p className="font-display text-charcoal/30 text-4xl md:text-6xl mt-4 text-right leading-none select-none">
                 {project.year}
               </p>
             </div>
