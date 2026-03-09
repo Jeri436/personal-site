@@ -4,7 +4,7 @@ katakana: 'PORTFOLIO'
 description: 'This very portfolio personal site built with Astro, React islands, and scroll-driven animations. Zero client-side JS except where it counts.'
 tech: ['Astro', 'React', 'Framer Motion', 'Tailwind CSS']
 year: 2025
-github: 'https://github.com/built-by-jeri/portfolio'
+github: 'https://github.com/Jeri436/personal-site'
 order: 1
 ---
 
