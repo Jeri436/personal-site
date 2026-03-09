@@ -1,0 +1,33 @@
+---
+const navItems = [
+  { label: 'PROJECTS', href: '/#projects' },
+  { label: 'SKILLS', href: '/#skills' },
+  { label: 'BLOG', href: '/blog' },
+  { label: 'CONTACT', href: '/#contact' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-charcoal border-b-3 border-charcoal">
+  <div class="max-w-7xl mx-auto px-6 flex items-stretch h-14">
+    <!-- Logo / Name block -->
+    <a
+      href="/"
+      class="flex items-center pr-6 border-r-3 border-parchment/20 font-display text-parchment text-xl tracking-widest hover:text-red-accent transition-colors duration-150"
+    >
+      BUILT BY JERI
+    </a>
+
+    <!-- Spacer -->
+    <div class="flex-1"></div>
+
+    <!-- Nav items -->
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="flex items-center px-6 border-l-3 border-parchment/20 font-display text-parchment text-sm tracking-widest hover:bg-parchment hover:text-charcoal transition-colors duration-150"
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</nav>

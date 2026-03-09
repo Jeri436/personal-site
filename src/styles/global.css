@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-parchment: #F2EDE4;
+  --color-charcoal: #1a1a1a;
+  --color-olive: #6B6B3A;
+  --color-olive-light: #8B8B5A;
+  --color-red-accent: #CC0000;
+  --color-cream: #FAF7F2;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-japanese: 'Noto Sans JP', sans-serif;
+
+  --border-width-brutal: 3px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-parchment);
+    color: var(--color-charcoal);
+    scroll-behavior: auto; /* Lenis takes over */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer utilities {
+  /* Tailwind v4 custom border widths */
+  .border-3 { border-width: 3px; }
+  .border-t-3 { border-top-width: 3px; }
+  .border-b-3 { border-bottom-width: 3px; }
+  .border-l-3 { border-left-width: 3px; }
+  .border-r-3 { border-right-width: 3px; }
+
+  .border-brutal {
+    border: 3px solid var(--color-charcoal);
+  }
+
+  .border-brutal-red {
+    border: 3px solid var(--color-red-accent);
+  }
+
+  .halftone {
+    background-image: radial-gradient(circle, rgba(26, 26, 26, 0.18) 1.2px, transparent 1.2px);
+    background-size: 7px 7px;
+  }
+
+  .halftone-dense {
+    background-image: radial-gradient(circle, rgba(26, 26, 26, 0.25) 1px, transparent 1px);
+    background-size: 5px 5px;
+  }
+
+  .diagonal-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--color-red-accent),
+      var(--color-red-accent) 2px,
+      transparent 2px,
+      transparent 10px
+    );
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-japanese {
+    font-family: var(--font-japanese);
+  }
+
+  .shadow-brutal {
+    box-shadow: 4px 4px 0px var(--color-charcoal);
+  }
+
+  .shadow-brutal-red {
+    box-shadow: 4px 4px 0px var(--color-red-accent);
+  }
+
+  /* Card panel divider: top on mobile (stacked), left on desktop (side-by-side) */
+  .panel-separator {
+    border-top: 3px solid var(--color-charcoal);
+  }
+
+  @media (min-width: 768px) {
+    .panel-separator {
+      border-top: none;
+      border-left: 3px solid var(--color-charcoal);
+    }
+  }
+}

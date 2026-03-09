@@ -1,0 +1,30 @@
+---
+const items = [
+  'SELECTED WORK',
+  '✦',
+  'BUILT BY JERI',
+  '✦',
+  'PROJECTS',
+  '✦',
+  'SELECTED WORK',
+  '✦',
+  'BUILT BY JERI',
+  '✦',
+  'PROJECTS',
+  '✦',
+];
+// Duplicate so the loop is seamless
+const doubled = [...items, ...items];
+---
+
+<div class="overflow-hidden bg-red-accent border-y-3 border-charcoal py-3 select-none">
+  <div class="flex whitespace-nowrap" style="animation: marquee 18s linear infinite;">
+    {doubled.map((item) => (
+      <span
+        class={`font-display tracking-widest px-6 ${item === '✦' ? 'text-charcoal text-base' : 'text-parchment text-xl'}`}
+      >
+        {item}
+      </span>
+    ))}
+  </div>
+</div>

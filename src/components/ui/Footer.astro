@@ -1,0 +1,59 @@
+---
+---
+
+<footer id="contact" class="bg-charcoal border-t-3 border-charcoal mt-0">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 border-b-3 border-parchment/20">
+      <div class="py-10 md:border-r-3 border-parchment/20 pr-8">
+        <p class="font-display text-parchment text-5xl tracking-widest">JERI</p>
+        <p class="font-display text-parchment/60 text-sm mt-2 tracking-widest">SOFTWARE ENGINEER</p>
+        <p class="text-parchment/40 text-xs mt-4 font-body">
+          Building fast, purposeful software on the web.
+        </p>
+      </div>
+
+      <div class="py-10 md:border-r-3 border-parchment/20 px-8">
+        <p class="font-display text-red-accent text-sm tracking-widest mb-4">CONNECT</p>
+        <ul class="space-y-2">
+          {[
+            { label: 'GitHub', href: 'https://github.com' },
+            { label: 'LinkedIn', href: 'https://linkedin.com' },
+            { label: 'Twitter / X', href: 'https://x.com' },
+          ].map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-parchment/70 hover:text-red-accent font-body text-sm transition-colors"
+              >
+                → {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="py-10 pl-8">
+        <p class="font-display text-red-accent text-sm tracking-widest mb-4">SAY HELLO</p>
+        <a
+          href="mailto:hello@builtbyjeri.dev"
+          class="inline-block border-brutal-red text-parchment px-4 py-2 font-body text-sm hover:bg-red-accent transition-colors shadow-brutal-red"
+        >
+          hello@builtbyjeri.dev
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between py-5">
+      <p class="text-parchment/30 text-xs font-body">
+        © {new Date().getFullYear()} JERI. Built with Astro.
+      </p>
+      <div class="flex gap-1">
+        <span class="w-2 h-2 bg-red-accent"></span>
+        <span class="w-2 h-2 bg-olive"></span>
+        <span class="w-2 h-2 bg-parchment/40"></span>
+      </div>
+    </div>
+  </div>
+</footer>

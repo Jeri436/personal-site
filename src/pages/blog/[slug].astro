@@ -1,0 +1,159 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/ui/NavBar.astro';
+import Footer from '../../components/ui/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout title={`${post.data.title} — Built by Jeri`} description={post.data.description}>
+  <NavBar />
+  <main class="pt-14 min-h-screen bg-parchment">
+
+    <header class="border-b-3 border-charcoal">
+      <div class="max-w-3xl mx-auto px-6 py-16">
+        <a href="/blog" class="inline-flex items-center gap-2 font-display text-sm text-olive tracking-widest hover:text-red-accent transition-colors duration-150 mb-8">
+          ← BLOG
+        </a>
+
+        <div class="flex flex-wrap gap-2 mb-5">
+          {post.data.tags.map((tag) => (
+            <span class="font-body text-xs px-2 py-0.5 border-3 border-charcoal text-charcoal">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <h1 class="font-display text-5xl md:text-6xl text-charcoal leading-tight mb-5">
+          {post.data.title}
+        </h1>
+
+        <time class="font-body text-sm text-olive tracking-widest">
+          {formatDate(post.data.date)}
+        </time>
+      </div>
+    </header>
+
+    <article class="max-w-3xl mx-auto px-6 py-14 prose-blog">
+      <Content />
+    </article>
+
+    <div class="max-w-3xl mx-auto px-6 pb-20 border-t-3 border-charcoal pt-8">
+      <a href="/blog" class="inline-flex items-center gap-2 font-display text-sm text-charcoal tracking-widest hover:text-red-accent transition-colors duration-150">
+        ← BACK TO BLOG
+      </a>
+    </div>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .prose-blog :global(h2) {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-charcoal);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  .prose-blog :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-charcoal);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .prose-blog :global(p) {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--color-charcoal) 85%, transparent);
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-blog :global(strong) {
+    color: var(--color-charcoal);
+    font-weight: 700;
+  }
+
+  .prose-blog :global(a) {
+    color: var(--color-red-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-blog :global(a:hover) {
+    color: var(--color-charcoal);
+  }
+
+  .prose-blog :global(ul),
+  .prose-blog :global(ol) {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--color-charcoal) 85%, transparent);
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-blog :global(li) {
+    margin-bottom: 0.4rem;
+  }
+
+  .prose-blog :global(code) {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    background: var(--color-charcoal);
+    color: var(--color-parchment);
+    padding: 0.15em 0.4em;
+  }
+
+  .prose-blog :global(pre) {
+    background: var(--color-charcoal);
+    color: var(--color-parchment);
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--color-charcoal);
+  }
+
+  .prose-blog :global(pre code) {
+    background: none;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .prose-blog :global(blockquote) {
+    border-left: 3px solid var(--color-red-accent);
+    padding-left: 1.25rem;
+    margin-left: 0;
+    font-style: italic;
+    color: color-mix(in srgb, var(--color-charcoal) 70%, transparent);
+  }
+
+  .prose-blog :global(hr) {
+    border: none;
+    border-top: 3px solid var(--color-charcoal);
+    margin: 2.5rem 0;
+  }
+</style>

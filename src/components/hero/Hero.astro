@@ -1,0 +1,97 @@
+---
+const currentlyLearning = ['Game Development', 'Piano']
+---
+
+<section
+  id='hero'
+  class='min-h-screen bg-parchment flex flex-col pt-14 relative overflow-hidden'
+>
+  <div
+    class='absolute top-10 right-0 w-72 h-72 halftone rounded-full border-brutal translate-x-1/3 opacity-60 pointer-events-none'
+    aria-hidden='true'
+  ></div>
+
+  <div class='absolute bottom-0 left-0 right-0 h-4 bg-charcoal pointer-events-none' aria-hidden='true'></div>
+
+  <div
+    class='absolute top-14 left-0 w-2 h-48 bg-red-accent pointer-events-none'
+    aria-hidden='true'
+  ></div>
+
+  <div class='flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-8 md:px-16 py-16'>
+    <div class='flex items-center gap-4 mb-6'>
+      <span class='w-12 h-px bg-charcoal'></span>
+      <span class='font-display text-olive text-sm tracking-widest'>FRONTEND ENGINEER</span>
+    </div>
+
+    <div class='flex items-stretch gap-0'>
+      <div class='flex-1 min-w-0'>
+        <h1 class='font-display text-charcoal leading-none tracking-tight'>
+          <span class='block text-[clamp(5rem,15vw,14rem)]'>JERI ツ</span>
+          <span class='block text-[clamp(2rem,6vw,5.5rem)] text-olive mt-[-0.15em]'>SOFTWARE</span>
+          <span class='block text-[clamp(2rem,6vw,5.5rem)] leading-none'>
+            ENGINEER<span class='text-red-accent'>.</span>
+          </span>
+        </h1>
+      </div>
+
+      <div class='hidden lg:flex flex-col justify-between border-l-brutal border-charcoal ml-10 pl-10 shrink-0 w-64 xl:w-80 py-1'>
+        <div>
+          <div class='flex gap-2 mb-6'>
+            <span class='relative flex h-2 w-2 shrink-0 mt-px'>
+              <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-red-accent opacity-75'></span>
+              <span class='relative inline-flex rounded-full h-2 w-2 bg-red-accent'></span>
+            </span>
+            <span class='font-display text-xs text-red-accent tracking-widest leading-none'>CURRENTLY LEARNING</span>
+          </div>
+
+          <ul class='flex flex-col gap-0 border-t-brutal border-charcoal'>
+            {currentlyLearning.map((item) => (
+              <li class='font-display text-[clamp(1.25rem,2.5vw,1.75rem)] text-charcoal tracking-tight border-b-3 border-charcoal py-3 leading-none'>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p class='font-body text-xs text-charcoal/40 mt-6 leading-relaxed'>
+          Things I'm actively digging into.
+        </p>
+      </div>
+    </div>
+
+    <div class='mt-10 flex flex-col sm:flex-row gap-8 items-start max-w-2xl'>
+      <p class='font-body text-charcoal/70 text-base leading-relaxed flex-1'>
+        I like building things mostly software, occasionally something that breaks. When I'm not at the keyboard, I'm probably with my cat.
+      </p>
+
+      <div class='flex flex-col gap-3 shrink-0'>
+        <a
+          href='#projects'
+          class='inline-block border-brutal bg-charcoal text-parchment font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:border-red-accent transition-colors duration-150 shadow-brutal'
+        >
+          PROJECTS
+        </a>
+        <a
+          href='#contact'
+          class='inline-block border-brutal text-charcoal font-display tracking-widest text-lg px-8 py-3 hover:bg-charcoal hover:text-parchment transition-colors duration-150'
+        >
+          CONTACT
+        </a>
+      </div>
+    </div>
+
+    <div id='skills' class='mt-16 flex flex-wrap gap-0 border-t-brutal border-charcoal pt-6'>
+      {['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Styled-Components', 'GraphQL', 'Cypress', 'Playwright'].map((skill) => (
+        <span class='font-body text-sm text-charcoal/70 border-r-brutal border-charcoal pr-4 mr-4 py-1 last:border-r-0'>
+          {skill}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <div class='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50'>
+    <span class='font-display text-xs text-charcoal tracking-widest'>SCROLL</span>
+    <div class='w-px h-10 bg-charcoal animate-pulse'></div>
+  </div>
+</section>

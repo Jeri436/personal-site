@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/ui/NavBar.astro';
+import Footer from '../../components/ui/Footer.astro';
+
+const rawPosts = await getCollection('blog');
+const posts = rawPosts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+---
+
+<Layout title="Blog — Built by Jeri" description="Thoughts, learnings, and notes from building on the web.">
+  <NavBar />
+  <main class="pt-14 min-h-screen bg-parchment">
+
+    <!-- Header -->
+    <section class="border-b-3 border-charcoal">
+      <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col gap-2">
+        <h1 class="font-display text-7xl text-charcoal leading-none">BLOG</h1>
+        <p class="font-body text-charcoal/60 text-base max-w-lg mt-2">
+          Learnings, thoughts, and notes from building on the web. Written for myself first but feel free to read along.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+      {posts.length === 0 ? (
+        <p class="font-body text-charcoal/50 text-center py-20">No posts yet. Check back soon.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l-3 border-t-3 border-charcoal">
+          {posts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex flex-col border-r-3 border-b-3 border-charcoal p-6 bg-parchment hover:bg-charcoal transition-colors duration-150 min-h-64"
+            >
+              <!-- Date -->
+              <time class="font-body text-xs text-olive group-hover:text-parchment/50 tracking-widest uppercase transition-colors duration-150 mb-4">
+                {formatDate(post.data.date)}
+              </time>
+
+              <!-- Title -->
+              <h2 class="font-display text-2xl text-charcoal group-hover:text-parchment leading-tight mb-3 transition-colors duration-150">
+                {post.data.title}
+              </h2>
+
+              <!-- Description -->
+              <p class="font-body text-sm text-charcoal/70 group-hover:text-parchment/70 leading-relaxed transition-colors duration-150">
+                {post.data.description}
+              </p>
+
+              <!-- Tags + READ pushed to bottom -->
+              <div class="mt-auto pt-6 flex items-end justify-between gap-4">
+                <div class="flex flex-wrap gap-2">
+                  {post.data.tags.map((tag) => (
+                    <span class="font-body text-xs px-2 py-0.5 border-3 border-charcoal group-hover:border-parchment text-charcoal group-hover:text-parchment transition-colors duration-150">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <span class="font-display text-sm text-red-accent tracking-widest shrink-0">
+                  READ →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
