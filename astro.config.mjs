@@ -9,4 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: 'https://jeri436.github.io/',
+  base: '/personal-site'
 })
