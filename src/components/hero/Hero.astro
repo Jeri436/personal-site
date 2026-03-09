@@ -1,4 +1,5 @@
 ---
+import { url } from '../../utils/url'
 const currentlyLearning = ['Game Development', 'Piano']
 ---
 
@@ -81,7 +82,7 @@ const currentlyLearning = ['Game Development', 'Piano']
           </a>
         </div>
         <a
-          href='/personal-site/blog'
+          href={url('/blog')}
           class='inline-block md:hidden border-brutal border-red-accent text-red-accent font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:text-parchment transition-colors duration-150'
         >
           BLOG

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { url } from '../../utils/url'
 
 const SIZE = 64
 
@@ -8,7 +9,7 @@ type Motion = 'idle' | 'idle2' | 'walking' | 'running'
 function frames(folder: string, name: string, count: number) {
   return Array.from(
     { length: count },
-    (_, i) => `/personal-site/cat/${folder}/${name}_${i}.png`,
+    (_, i) => url(`/cat/${folder}/${name}_${i}.png`),
   )
 }
 

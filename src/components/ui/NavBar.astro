@@ -1,9 +1,11 @@
 ---
+import { url } from '../../utils/url'
+
 const navItems = [
-  { label: 'PROJECTS', href: '/personal-site#projects' },
-  { label: 'SKILLS', href: '/personal-site#skills' },
-  { label: 'BLOG', href: '/personal-site/blog' },
-  { label: 'CONTACT', href: '/personal-site#contact' },
+  { label: 'PROJECTS', href: url('/#projects') },
+  { label: 'SKILLS', href: url('/#skills') },
+  { label: 'BLOG', href: url('/blog') },
+  { label: 'CONTACT', href: url('/#contact') },
 ]
 ---
 
@@ -13,7 +15,7 @@ const navItems = [
   <div class='max-w-7xl mx-auto px-6 flex items-stretch h-14'>
     <!-- Logo / Name block -->
     <a
-      href='/'
+      href={url('/')}
       class='flex items-center pr-6 md:border-r-3 border-parchment/20 font-display text-parchment text-xl tracking-widest hover:text-red-accent transition-colors duration-150'
     >
       BUILT BY JERI
