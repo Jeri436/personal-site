@@ -18,7 +18,7 @@ const currentlyLearning = ['Game Development', 'Piano']
     aria-hidden='true'
   ></div>
 
-  <div class='flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-8 md:px-16 py-16'>
+  <div class='flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-8 md:px-16 py-16 pb-24'>
     <div class='flex items-center gap-4 mb-6'>
       <span class='w-12 h-px bg-charcoal'></span>
       <span class='font-display text-olive text-sm tracking-widest'>FRONTEND ENGINEER</span>
@@ -65,18 +65,26 @@ const currentlyLearning = ['Game Development', 'Piano']
         I like building things mostly software, occasionally something that breaks. When I'm not at the keyboard, I'm probably with my cat.
       </p>
 
-      <div class='flex flex-col gap-3 shrink-0'>
+      <div class='flex gap-3 shrink-0 items-end'>
+        <div class='flex flex-col gap-3'>
+          <a
+            href='#projects'
+            class='inline-block border-brutal bg-charcoal text-parchment font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:border-red-accent transition-colors duration-150 shadow-brutal'
+          >
+            PROJECTS
+          </a>
+          <a
+            href='#contact'
+            class='inline-block border-brutal text-charcoal font-display tracking-widest text-lg px-8 py-3 hover:bg-charcoal hover:text-parchment transition-colors duration-150'
+          >
+            CONTACT
+          </a>
+        </div>
         <a
-          href='#projects'
-          class='inline-block border-brutal bg-charcoal text-parchment font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:border-red-accent transition-colors duration-150 shadow-brutal'
+          href='/personal-site/blog'
+          class='inline-block md:hidden border-brutal border-red-accent text-red-accent font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:text-parchment transition-colors duration-150'
         >
-          PROJECTS
-        </a>
-        <a
-          href='#contact'
-          class='inline-block border-brutal text-charcoal font-display tracking-widest text-lg px-8 py-3 hover:bg-charcoal hover:text-parchment transition-colors duration-150'
-        >
-          CONTACT
+          BLOG
         </a>
       </div>
     </div>
