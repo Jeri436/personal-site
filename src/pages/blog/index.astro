@@ -38,10 +38,15 @@ function formatDate(date: Date) {
               href={`/blog/${post.slug}`}
               class="group flex flex-col border-r-3 border-b-3 border-charcoal p-6 bg-parchment hover:bg-charcoal transition-colors duration-150 min-h-64"
             >
-              <!-- Date -->
-              <time class="font-body text-xs text-olive group-hover:text-parchment/50 tracking-widest uppercase transition-colors duration-150 mb-4">
-                {formatDate(post.data.date)}
-              </time>
+              <!-- Date + Read time -->
+              <div class="flex items-center gap-3 mb-4">
+                <time class="font-body text-xs text-olive group-hover:text-parchment/50 tracking-widest uppercase transition-colors duration-150">
+                  {formatDate(post.data.date)}
+                </time>
+                {post.data.readTime && (
+                  <span class="font-body text-xs text-charcoal/40 group-hover:text-parchment/30 tracking-widest transition-colors duration-150">{post.data.readTime}</span>
+                )}
+              </div>
 
               <!-- Title -->
               <h2 class="font-display text-2xl text-charcoal group-hover:text-parchment leading-tight mb-3 transition-colors duration-150">

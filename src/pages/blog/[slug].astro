@@ -43,9 +43,14 @@ function formatDate(date: Date) {
           {post.data.title}
         </h1>
 
-        <time class="font-body text-sm text-olive tracking-widest">
-          {formatDate(post.data.date)}
-        </time>
+        <div class="flex items-center gap-4">
+          <time class="font-body text-sm text-olive tracking-widest">
+            {formatDate(post.data.date)}
+          </time>
+          {post.data.readTime && (
+            <span class="font-body text-sm text-charcoal/40 tracking-widest">{post.data.readTime}</span>
+          )}
+        </div>
       </div>
     </header>
 
