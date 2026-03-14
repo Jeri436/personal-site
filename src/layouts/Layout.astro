@@ -35,10 +35,7 @@ const {
   </head>
   <body>
     <slot />
-    <!-- Cat follower — hidden on touch-only devices (no cursor) -->
-    <div class="cat-follower-mount hidden md:block">
-      <CatFollower client:load />
-    </div>
+    <CatFollower client:load />
 
     <!-- Lenis smooth scroll init -->
     <script>

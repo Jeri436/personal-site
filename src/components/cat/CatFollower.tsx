@@ -71,7 +71,44 @@ function getFrames(motion: Motion, dir: Dir): string[] {
   return ANIM_RUN[dir]
 }
 
-export default function CatFollower() {
+// Mobile: static idle cat fixed to bottom-right, looping
+function CatMobile() {
+  const [frameIdx, setFrameIdx] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setFrameIdx((i) => (i + 1) % ANIM_IDLE.length)
+    }, FRAME_MS.idle)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div
+      aria-hidden='true'
+      style={{
+        position: 'fixed',
+        bottom: 16,
+        right: 16,
+        width: SIZE,
+        height: SIZE,
+        pointerEvents: 'none',
+        zIndex: 9999,
+      }}
+    >
+      <img
+        src={ANIM_IDLE[frameIdx]}
+        alt=''
+        width={SIZE}
+        height={SIZE}
+        draggable={false}
+        style={{ imageRendering: 'pixelated', display: 'block' }}
+      />
+    </div>
+  )
+}
+
+// Desktop: cursor-following cat
+function CatDesktop() {
   const wrapRef = useRef<HTMLDivElement>(null)
 
   const motionRef = useRef<Motion>('idle')
@@ -116,7 +153,6 @@ export default function CatFollower() {
     }, delay)
   }
 
-  // idle plays once then freezes; walk/run loops continuously
   useEffect(() => {
     const isIdleAnim =
       motionRef.current === 'idle' || motionRef.current === 'idle2'
@@ -198,14 +234,12 @@ export default function CatFollower() {
             setMotion('idle', dirRef.current)
 
             if (isWanderingRef.current) {
-              // arrived at wander point — occasionally idle, usually go straight to next spot
               if (Math.random() < WANDER_IDLE_CHANCE) {
                 scheduleWander()
               } else {
                 pickWanderTarget()
               }
             } else {
-              // arrived at cursor — wait, then resume wandering
               wanderTimerRef.current = setTimeout(() => {
                 wanderTimerRef.current = null
                 isWanderingRef.current = true
@@ -254,4 +288,15 @@ export default function CatFollower() {
       />
     </div>
   )
+}
+
+export default function CatFollower() {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  if (isMobile === null) return null
+  return isMobile ? <CatMobile /> : <CatDesktop />
 }
