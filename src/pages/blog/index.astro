@@ -32,11 +32,11 @@ function formatDate(date: Date) {
       {posts.length === 0 ? (
         <p class="font-body text-charcoal/50 text-center py-20">No posts yet. Check back soon.</p>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-l-3 border-t-3 border-charcoal">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
             <a
               href={`/blog/${post.slug}`}
-              class="group flex flex-col border-r-3 border-b-3 border-charcoal p-6 bg-parchment hover:bg-charcoal transition-colors duration-150 min-h-64"
+              class="group flex flex-col border-3 border-charcoal p-6 bg-parchment hover:bg-charcoal transition-colors duration-150 min-h-64"
             >
               <!-- Date + Read time -->
               <div class="flex items-center gap-3 mb-4">
