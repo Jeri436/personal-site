@@ -1,39 +1,46 @@
 ---
 import { url } from '../../utils/url'
 
-const navItems = [
-  { label: 'PROJECTS', href: url('/#projects') },
-  { label: 'SKILLS', href: url('/#skills') },
-  { label: 'BLOG', href: url('/blog') },
-  { label: 'CONTACT', href: url('/#contact') },
-]
 ---
 
-<nav
-  class='fixed top-0 left-0 right-0 z-50 bg-charcoal border-b-3 border-charcoal'
->
-  <div class='max-w-7xl mx-auto px-6 flex items-stretch h-14'>
-    <!-- Logo / Name block -->
-    <a
-      href={url('/')}
-      class='flex items-center pr-6 md:border-r-3 border-parchment/20 font-display text-parchment text-xl tracking-widest hover:text-red-accent transition-colors duration-150'
-    >
+<nav id='navbar' class='fixed top-0 left-0 right-0 z-50 border-b-3 border-transparent'>
+  <div class='max-w-7xl mx-auto px-6 flex items-center h-14'>
+
+    <a href={url('/')} class='nav-logo font-display text-charcoal text-xl tracking-widest hover:text-red-accent transition-colors duration-150'>
       BUILT BY JERI
     </a>
 
-    <!-- Spacer -->
-    <div class='flex-1'></div>
-
-    <!-- Nav items -->
-    {
-      navItems.map((item) => (
-        <a
-          href={item.href}
-          class='hidden md:flex items-center px-6 border-l-3 border-parchment/20 font-display text-parchment text-sm tracking-widest hover:bg-parchment hover:text-charcoal transition-colors duration-150'
-        >
-          {item.label}
-        </a>
-      ))
-    }
   </div>
 </nav>
+
+<style>
+  #navbar {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  #navbar.scrolled {
+    background-color: var(--color-charcoal);
+    border-color: rgba(242, 237, 228, 0.2);
+  }
+
+  #navbar.scrolled .nav-logo,
+  #navbar.scrolled .nav-link {
+    color: var(--color-parchment);
+  }
+
+  .nav-logo,
+  .nav-link {
+    transition: color 0.3s ease;
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('navbar')!;
+
+  function update() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+</script>

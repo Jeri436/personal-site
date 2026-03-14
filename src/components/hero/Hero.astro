@@ -83,14 +83,14 @@ const currentlyLearning = ['Game Development', 'Piano']
         </div>
         <a
           href={url('/blog')}
-          class='inline-block md:hidden border-brutal border-red-accent text-red-accent font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:text-parchment transition-colors duration-150'
+          class='inline-block border-brutal border-red-accent text-red-accent font-display tracking-widest text-lg px-8 py-3 hover:bg-red-accent hover:text-parchment transition-colors duration-150'
         >
           BLOG
         </a>
       </div>
     </div>
 
-    <div id='skills' class='mt-16 flex flex-wrap gap-0 border-t-brutal border-charcoal pt-6'>
+    <div id='skills' class='mt-8 md:mt-16 flex flex-wrap gap-0 border-t-brutal border-charcoal pt-6'>
       {['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Styled-Components', 'GraphQL', 'Cypress', 'Playwright'].map((skill) => (
         <span class='font-body text-sm text-charcoal/70 border-r-brutal border-charcoal pr-4 mr-4 py-1 last:border-r-0'>
           {skill}
@@ -99,7 +99,7 @@ const currentlyLearning = ['Game Development', 'Piano']
     </div>
   </div>
 
-  <div class='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50'>
+  <div class='absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 opacity-50'>
     <span class='font-display text-xs text-charcoal tracking-widest'>SCROLL</span>
     <div class='w-px h-10 bg-charcoal animate-pulse'></div>
   </div>
